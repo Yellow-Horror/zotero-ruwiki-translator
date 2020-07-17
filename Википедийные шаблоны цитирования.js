@@ -67,7 +67,8 @@ function formatAuthors(authors, useTypes) {
 	var text = "";
 	for (var i=0; i<authors.length; i++) {
 		var author = authors[i];
-		text += ", "+author.firstName;
+		text += ", ";
+		if (author.firstName) text += author.firstName;
 		if (author.firstName && author.lastName) text += " ";
 		text += author.lastName;
 		if (useTypes) text += " ("+Zotero.Utilities.getLocalizedCreatorType(author.creatorType)+")";
@@ -227,7 +228,7 @@ function doExport() {
 				
 				// attach others
 				if (others) {
-					properties.others = others;
+					properties["ответственный"] = others;
 				}
 			}
 		}
